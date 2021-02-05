@@ -1,8 +1,14 @@
-# Welcome to your CDK TypeScript project!
+# Open Banking Brazil
 
-This is a blank project for TypeScript development with CDK.
+## Folders
+todo...
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+## Deploy Steps
+
+ * `npm install`
+ * `cdk bootstrap`
+ * `cdk synth`
+ * `cdk deploy`
 
 ## Useful commands
 
