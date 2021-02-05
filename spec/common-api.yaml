@@ -1,0 +1,244 @@
+openapi: 3.0.0
+info:
+  title: Comuns - APIs OpenData do Open Banking Brasil
+  description: As APIs descritas neste documento são referentes as APIs da fase OpenData do Open Banking Brasil.
+  version: 1.0.0
+  contact:
+    email: "apiteam@swagger.io"
+tags:
+  - name: "Discovery"
+
+servers:
+  - url: 'http://api.banco.com.br/open-banking/discovery/v1'
+    # BUG: https://github.com/aws/aws-cdk/issues/9684
+    # x-amazon-apigateway-endpoint-configuration:
+    #   vpcEndpointIds:
+    #     - Fn::Sub: "${ApigwVpce}"
+
+x-amazon-apigateway-request-validators:
+  all:
+    validateRequestParameters: true
+    validateRequestBody: true
+
+x-amazon-apigateway-request-validator: all
+
+x-amazon-apigateway-policy:
+  Version: "2012-10-17"
+  Statement:
+    - Effect: "Allow"
+      Principal: "*"
+      Action: "execute-api:Invoke"
+      Resource:
+        - "execute-api:/*"
+    - Effect: "Deny"
+      Principal: "*"
+      Action: "execute-api:Invoke"
+      Resource:
+        - "execute-api:/*"
+      Condition:
+        StringNotEquals:
+          aws:SourceVpce: 
+            Fn::Sub: "${ApigwVpce}"
+
+
+paths:
+  /status:
+    get:
+      tags:
+        - Discovery
+      summary: a descrição referente ao código de status retornado pelas APIs
+      description: " descrição referente ao código de status retornado pelas APIs"
+      operationId: "getStatus"
+      responses:
+        '200':
+          description: código de status retornado pelas APIs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDiscoveryStatusList'
+      x-amazon-apigateway-integration:
+        type: "mock"
+        requestTemplates:
+          application/json: |
+            {"statusCode" : 200}
+        responses:
+          "default":
+            statusCode: "200"
+            responseTemplates:
+              application/json: |
+                {
+                  "data": {
+                    "status": "OK",
+                    "explanation": "Retorno com Sucesso",
+                    "detectionTime": "2020-01-01T01:00:00+00:00",
+                    "expectedResolutionTime": "2020-01-01T01:00:00+00:00",
+                    "updateTime": "2020-01-02T01:00:00+00:00",
+                    "unavailableEndpoints": []
+                  },
+                  "links": {
+                    "self": "https://api.banco.com.br/open-banking/discovery/v1/status"
+                  },
+                  "meta": {
+                    "totalRecords": 1,
+                    "totalPages": 1
+                  }
+                }
+
+  /outstage:
+    get:
+      tags:
+        - Discovery
+      summary: a descrição referente ao código de status retornado pelas APIs
+      description: "a descrição referente ao código de status retornado pelas APIs"
+      operationId: "getOutstage"
+      responses:
+        '200':
+          description: código de status retornado pelas APIs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDiscoveryOutstageList'
+      x-amazon-apigateway-integration:
+        type: "mock"
+        requestTemplates:
+          application/json: |
+            {"statusCode" : 200}
+        responses:
+          "default":
+            statusCode: "200"
+            responseTemplates:
+              application/json: |
+                {
+                  "data": {
+                    "outages": [
+                      {
+                        "outageTime": "2020-01-01T01:00:00+00:00",
+                        "duration": "PT2H30M",
+                        "isPartial": false,
+                        "explanation": "Atualização do API Gateway",
+                        "unavailableEndpoints": []
+                      }
+                    ]
+                  },
+                  "links": {
+                    "self": "https://api.banco.com.br/open-banking/discovery/v1/outages"
+                  },
+                  "meta": {
+                    "totalRecords": 1,
+                    "totalPages": 1
+                  }
+                }
+                
+components:
+  schemas:
+    ResponseDiscoveryStatusList:
+      type: object
+      required:
+        - data
+        - links
+        - meta
+      properties:
+        data:
+          type: object
+          required:
+            - status
+            - explanation
+            - detectionTime
+            - expectedResolutionTime
+            - updateTime
+          properties:
+            status:
+              type: string
+              description: Enum com Status da API. OK (a implementação é totalmente funcional). PARTIAL_FAILURE (um ou mais endpoints estão indisponíveis). NÃO DISPONÍVEL (a implementação completa está indisponível). SCHEDULED_OUTAGE (uma interrupção anunciada está em vigor)
+              example: OK
+            explanation:
+              type: string
+              description: Fornece uma explicação da interrupção atual que pode ser exibida para um cliente final. Obrigatório se a propriedade status tiver algum valor que não seja OK
+              example: Retorno com Sucesso
+            detectionTime:
+              type: string
+              description: A data e hora em que a interrupção atual foi detectada. Só deve estar presente se a propriedade status for PARTIAL_FAILURE ou UNAVAILABLE
+              example: '2020-01-01T01:00:00+00:00'
+            expectedResolutionTime:
+              type: string
+              description: A data e hora em que o serviço completo deve continuar (se conhecido). Não deve estar presente se a propriedade status tiver um valor OK.
+              example: '2020-01-01T01:00:00+00:00'
+            updateTime:
+              type: string
+              description: A data e hora em que esse status foi atualizado pela última vez pelo titular dos dados.
+              example: '2020-01-02T01:00:00+00:00'
+        links:
+          $ref: '#/components/schemas/Links'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    ResponseDiscoveryOutstageList:
+      type: object
+      required:
+        - data
+        - links
+        - meta
+      properties:
+        data:
+          type: array
+          items:
+            required:
+              - outageTime
+              - duration
+              - isPartial
+              - explanation
+            properties:
+              outageTime:
+                type: string
+                description: Data e hora planejada do início da indisponibilidade
+                example: '2020-01-01T01:00:00+00:00'
+              duration:
+                type: string
+                description: Duração prevista da indisponibilidade
+                example: PT2H30M
+              isPartial:
+                type: boolean
+                description: Flag que indica se a indisponibilidade é parcial (atingindo apenas alguns end points) ou total (atingindo todos os end points)
+                example: false
+              explanation:
+                type: string
+                description: Explicação sobre os motivos da indisponibilidade.
+                example: Atualização do API Gateway
+        links:
+          $ref: '#/components/schemas/Links'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    Links:
+      type: object
+      properties:
+        self:
+          type: string
+          description: URL da página atualmente requisitada
+          example: 'https://api.banco.com.br/open-banking/channels/v1/<resource>'
+        first:
+          type: string
+          description: URL da primeira página de registros
+          example: 'https://api.banco.com.br/open-banking/channels/v1/<resource>'
+        prev:
+          type: string
+          description: URL da página anterior de registros
+        next:
+          type: string
+          description: URL da próxima página de registros
+        last:
+          type: string
+          description: URL da última página de registros
+          example: 'https://api.banco.com.br/open-banking/channels/v1/<resource>'
+    Meta:
+      type: object
+      properties:
+        totalRecords:
+          type: integer
+          description: Total de registros encontrados
+          example: 1
+        totalPages:
+          type: integer
+          description: Total de páginas para os registros encontrados
+          example: 1
+      required:
+        - totalRecords
+        - totalPages

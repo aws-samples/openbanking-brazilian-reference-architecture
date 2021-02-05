@@ -1,0 +1,374 @@
+{
+	"info": {
+		"_postman_id": "664f42cc-ba4d-4293-a684-4c7894ebc646",
+		"name": "OpenBankingBrazil",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "APIs Comuns",
+			"item": [
+				{
+					"name": "API de Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{host}}/discovery/{{version}}/status",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"discovery",
+								"{{version}}",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "API de Outages",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{host}}/discovery/{{version}}/outstage",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"discovery",
+								"{{version}}",
+								"outstage"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "API - Canais de Atendimento",
+			"item": [
+				{
+					"name": "Dependências próprias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{host}}/channels/{{version}}/branches",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"channels",
+								"{{version}}",
+								"branches"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Canais de atendimento eletrônico",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{host}}/channels/{{version}}/electronic-channels",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"channels",
+								"{{version}}",
+								"electronic-channels"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Canais de atendimento telefônico",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{host}}/channels/{{version}}/phone-channels",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"channels",
+								"{{version}}",
+								"phone-channels"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Correspondentes bancários",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{host}}/channels/{{version}}/banking-agents",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"channels",
+								"{{version}}",
+								"banking-agents"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "API - Produtos e Serviços",
+			"item": [
+				{
+					"name": "Contas pessoa física",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{host}}/products-services/{{version}}/personal-accounts",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products-services",
+								"{{version}}",
+								"personal-accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contas pessoa jurídica",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{host}}/products-services/{{version}}/business-accounts",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products-services",
+								"{{version}}",
+								"business-accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Empréstimos pessoa física",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{host}}/products-services/{{version}}/personal-loans",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products-services",
+								"{{version}}",
+								"personal-loans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Empréstimos pessoa jurídica",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{host}}/products-services/{{version}}/business-loans",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products-services",
+								"{{version}}",
+								"business-loans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Financiamento Pessoa Física",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{host}}/products-services/{{version}}/personal-financings",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products-services",
+								"{{version}}",
+								"personal-financings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Financiamento Pessoa Jurídica",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{host}}/products-services/{{version}}/business-financings",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products-services",
+								"{{version}}",
+								"business-financings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Antecipação de recebíveis Pessoa Física",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{host}}/products-services/{{version}}/personal-invoice-financings",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products-services",
+								"{{version}}",
+								"personal-invoice-financings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Antecipação de recebíveis Pessoa Jurídica",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{host}}/products-services/{{version}}/business-invoice-financings",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products-services",
+								"{{version}}",
+								"business-invoice-financings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cartão de crédito de pessoa física",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{host}}/products-services/{{version}}/personal-credit-cards",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products-services",
+								"{{version}}",
+								"personal-credit-cards"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cartão de crédito de pessoa jurídica",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{host}}/products-services/{{version}}/business-credit-cards",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products-services",
+								"{{version}}",
+								"business-credit-cards"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "API - Admin",
+			"item": [
+				{
+					"name": "Métricas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{host}}/admin/{{version}}/metrics",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"admin",
+								"{{version}}",
+								"metrics"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
