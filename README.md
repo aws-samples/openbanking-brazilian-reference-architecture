@@ -80,19 +80,33 @@ VERSION='v1'
 There are the following paths available for tests:
 
 $HOST/discovery/$VERSION/status
+
 $HOST/discovery/$VERSION/outstage
+
 $HOST/channels/$VERSION/branches
+
 $HOST/channels/$VERSION/electronic-channels
+
 $HOST/channels/$VERSION/phone-channels
+
 $HOST/channels/$VERSION/banking-agents
+
 $HOST/products-services/$VERSION/personal-accounts
+
 $HOST/products-services/$VERSION/business-accounts
+
 $HOST/products-services/$VERSION/personal-loans
+
 $HOST/products-services/$VERSION/business-loans
+
 $HOST/products-services/$VERSION/personal-financings
+
 $HOST/products-services/$VERSION/personal-invoice-financings
+
 $HOST/products-services/$VERSION/personal-credit-cards
+
 $HOST/products-services/$VERSION/business-credit-cards
+
 $HOST/admin/$VERSION/metrics
 
 
