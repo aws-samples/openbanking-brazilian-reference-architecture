@@ -40,7 +40,7 @@ cdk deploy
 This will clone this repo, then install all packages required. CDK will then bootstrap a deploy environment in your account. You will then synthetize a cloudformation template and finally deploy it. The end result will be the following architecture: 
 
 TODO
-![arquitetura](https://media.giphy.com/media/VIQfHC9jAZbt6ojTdo/giphy.gif)
+![arquitetura](docs/proxy-mtls-architecture-background.png)
 
 # How to test
 
@@ -48,6 +48,8 @@ There are two options for tests:
 
 - Postman
 - Terminal
+
+Before moving on, make sure you have in hand the your Network Load Balancer (NLB) URL. CDK shows you an output with the created assets and you should look for a name similar to "OpenBankingBrazil.ProxyProxyServiceLoadBalancerDNSE4FAFBA0". Copy the value of this key as it is the URL for your NLB.
 
 ## Postman
 
@@ -67,14 +69,20 @@ Set the following env variables:
 - [Import json File](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/)
 
 
-***The configuration file location*** `stub/proxy/client/OpenBankingBrazil.postman_collection.json`
+***The configuration file location:*** 
+`proxy/client/OpenBankingBrazil.postman_collection.json`
+
 
 - [Configure the certificates](https://learning.postman.com/docs/sending-requests/certificates/)
  
 
-***Use the following: client.crt, client.key. The host is your NLB DNS.***
+***Use the following:***
+ 1. `proxy/client/ssl/client.crt`, 
+ 2. `proxy/client/ssl/client.key`. 
+ 3. The host is your NLB DNS.
 
-Finally, you run any of the requests you should be able to see the response as following:
+
+Finally you can run any of the requests and you should be able to see the response as the picture below:
 
 ![image](postman.png)
 
@@ -83,13 +91,13 @@ Finally, you run any of the requests you should be able to see the response as f
 To test the mTLS connection, use terminal to run the following commands:
 
 ```
-cd stub/proxy/client/ssl
+cd proxy/client/ssl
 HOST='YOUR-NLB-DNS-HERE'
 VERSION='v1'
 ```
 
 There are the following paths available for tests:
-
+```
 $HOST/discovery/$VERSION/status
 
 $HOST/discovery/$VERSION/outstage
@@ -119,7 +127,7 @@ $HOST/products-services/$VERSION/personal-credit-cards
 $HOST/products-services/$VERSION/business-credit-cards
 
 $HOST/admin/$VERSION/metrics
-
+```
 
 To test any of these paths, run the following command: 
 
