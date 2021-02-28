@@ -38,8 +38,9 @@ cdk deploy
 ```
 
 This will clone this repo, then install all packages required. CDK will then bootstrap a deploy environment in your account. You will then synthetize a cloudformation template and finally deploy it. The end result will be the following architecture: 
+
 TODO
-![https://gph.is/g/4DnjOvv] 
+![arquitetura](https://gph.is/g/4DnjOvv)
 
 # How to test
 
