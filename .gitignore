@@ -11,3 +11,5 @@ cdk.out
 .parcel-cache
 
 .DS_Store
+
+*.sql

@@ -2,9 +2,10 @@
 
 # Overview
 
-This repo intends to demonstrate how the Open Banking can work in AWS using mTLS.
-# Prerequisites:
+This repo intends to demonstrate how an environment with the Open Banking mock API's can work in AWS using mTLS.
+*** 
 
+# Prerequisites:
 
 - [awscli](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
 
@@ -14,9 +15,13 @@ This repo intends to demonstrate how the Open Banking can work in AWS using mTLS
 
 - [cdk](https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html)
 
+- [Docker](https://docs.docker.com/get-docker/)
+
 ## How to deploy
 
-Run the following commands: 
+Make sure Docker is running. During the deploy we will use Docker to create the container that will be used to run NGINX. 
+
+After Docker is running, execute the following commands: 
 
 ```
 git clone <REPO_URL>
@@ -31,6 +36,11 @@ cdk synth
 
 cdk deploy
 ```
+
+This will clone this repo, then install all packages required. CDK will then bootstrap a deploy environment in your account. You will then synthetize a cloudformation template and finally deploy it. The end result will be the following architecture: 
+TODO
+![https://gph.is/g/4DnjOvv] 
+
 # How to test
 
 There are two options for tests:
@@ -40,7 +50,7 @@ There are two options for tests:
 
 ## Postman
 
-Follow the steps: 
+Follow these steps to prepare your setup: 
 
 - [Create Workspace](https://learning.postman.com/docs/collaborating-in-postman/using-workspaces/creating-workspaces/)
 
