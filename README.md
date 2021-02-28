@@ -39,7 +39,6 @@ cdk deploy
 
 This will clone this repo, then install all packages required. CDK will then bootstrap a deploy environment in your account. You will then synthetize a cloudformation template and finally deploy it. The end result will be the following architecture: 
 
-TODO
 ![arquitetura](docs/proxy-mtls-architecture-background.png)
 
 # How to test
