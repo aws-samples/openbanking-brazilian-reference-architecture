@@ -15,3 +15,5 @@ cdk.out
 *.sql
 
 OpenBankingBrazil/
+dashboard/
+.vscode/
