@@ -1,0 +1,38 @@
+server {
+    listen 443 ssl;
+
+    ssl_certificate     /etc/ssl/bank.crt;
+    ssl_certificate_key /etc/ssl/bank.key;
+    ssl_protocols       TLSv1.2;
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers ECDH+AESGCM:ECDH+AES256:ECDH+AES128:DH+3DES:!ADH:!AECDH:!MD5;
+
+    ssl_client_certificate /etc/ssl/client.crt;
+    ssl_verify_client      on;
+
+    location /discovery/${VERSION}/ {
+        proxy_pass ${COMMON_API};
+    }
+    
+    location /channels/${VERSION}/ {
+        proxy_pass ${CHANNELS_API};
+    }
+    
+    #location /products-services/${VERSION}/ {
+    #    proxy_pass ${PRODUCTS_SERVICES_API};
+    #}
+    
+    location /admin/${VERSION}/ {
+        proxy_pass ${ADMIN_API};
+    }
+    
+}
+
+server {
+    listen 80;
+
+    location /health {
+        add_header Content-Type text/plain;
+        return 200 "Alive!";
+    }
+}
