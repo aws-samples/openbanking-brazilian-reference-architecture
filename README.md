@@ -83,7 +83,7 @@ Set the following env variables:
 
 Finally you can run any of the requests and you should be able to see the response as the picture below:
 
-![image](postman.png)
+![image](docs/postman.png)
 
 
 ## Terminal
