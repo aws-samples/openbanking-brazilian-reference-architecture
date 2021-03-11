@@ -191,7 +191,6 @@ For example:
 Run the following command:
 
 `cdk destroy`
->>>>>>> master
 
 ## Security
 
