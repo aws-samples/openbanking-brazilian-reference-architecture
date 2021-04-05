@@ -56,7 +56,7 @@ export class Proxy extends ConstructBase {
                     "VERSION": this.props.apis.version,
                     "COMMON_API": this.props.apis.getUrl(this.props.apis.commonsApi),
                     "CHANNELS_API": this.props.apis.getUrl(this.props.apis.channelsApi),
-                    // "PRODUCTS_SERVICES_API": this.props.apis.getUrl(this.props.apis.productsServicesApi),
+                    "PRODUCTS_SERVICES_API": this.props.apis.getUrl(this.props.apis.productsServicesApi),
                     "ADMIN_API": this.props.apis.getUrl(this.props.apis.adminApi)
                 }
             }

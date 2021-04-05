@@ -18,12 +18,12 @@ server {
         proxy_pass ${CHANNELS_API};
     }
     
-    #location /products-services/${VERSION}/ {
-    #    proxy_pass ${PRODUCTS_SERVICES_API};
-    #}
-    
     location /admin/${VERSION}/ {
         proxy_pass ${ADMIN_API};
+    }
+
+    location /products-services/${VERSION}/ {
+        proxy_pass ${PRODUCTS_SERVICES_API};
     }
     
 }

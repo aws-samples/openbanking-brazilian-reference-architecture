@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "664f42cc-ba4d-4293-a684-4c7894ebc646",
+		"_postman_id": "7312536f-765a-44be-9b5d-3d56595a6983",
 		"name": "OpenBankingBrazil",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -34,7 +34,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://{{host}}/discovery/{{version}}/outstage",
+							"raw": "https://{{host}}/discovery/{{version}}/outages",
 							"protocol": "https",
 							"host": [
 								"{{host}}"
@@ -42,14 +42,13 @@
 							"path": [
 								"discovery",
 								"{{version}}",
-								"outstage"
+								"outages"
 							]
 						}
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "API - Canais de Atendimento",
@@ -133,9 +132,28 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Terminais de autoatendimento compartilhados",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{host}}/channels/{{version}}/shared-automated-teller-machines",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"channels",
+								"{{version}}",
+								"shared-automated-teller-machines"
+							]
+						}
+					},
+					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "API - Produtos e Serviços",
@@ -339,9 +357,48 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Adiantamento a Depositante pessoa natural",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{host}}/products-services/{{version}}/personal-unarranged-account-overdraft",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products-services",
+								"{{version}}",
+								"personal-unarranged-account-overdraft"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adiantamento a Depositante pessoa jurídica",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{host}}/products-services/{{version}}/business-unarranged-account-overdraft",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products-services",
+								"{{version}}",
+								"business-unarranged-account-overdraft"
+							]
+						}
+					},
+					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "API - Admin",
@@ -366,9 +423,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

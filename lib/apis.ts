@@ -20,7 +20,7 @@ export class Apis extends ConstructBase {
     readonly adminApi: apigateway.SpecRestApi;
     readonly channelsApi: apigateway.SpecRestApi;
     readonly commonsApi: apigateway.SpecRestApi;
-    // readonly productsServicesApi: apigateway.SpecRestApi;
+    readonly productsServicesApi: apigateway.SpecRestApi;
 
     constructor(scope: cdk.Construct, id: string, props: ApiProps) {
         super(scope, id);
@@ -30,7 +30,7 @@ export class Apis extends ConstructBase {
         this.adminApi = this.createApi('admin-api');
         this.channelsApi = this.createApi('channels-api');
         this.commonsApi = this.createApi('common-api');
-        // this.productsServicesApi = this.createApi('products-services-api');
+        this.productsServicesApi = this.createApi('products-services-api');
     }
 
     private createApi(type: string): apigateway.SpecRestApi {
