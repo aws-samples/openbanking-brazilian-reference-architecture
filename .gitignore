@@ -17,3 +17,12 @@ cdk.out
 OpenBankingBrazil/
 dashboard/
 .vscode/
+
+# certs ignore
+proxy/ssl/bank.csr
+proxy/ssl/bank.crt
+proxy/ssl/bank.key
+
+proxy/client/ssl/client.csr
+proxy/client/ssl/client.crt
+proxy/client/ssl/client.key
