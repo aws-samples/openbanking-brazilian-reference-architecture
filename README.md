@@ -28,6 +28,8 @@ git clone <REPO_URL>
 
 cd <REPO_NAME>/
 
+./proxy/generate-certs.sh
+
 npm install
 
 cdk bootstrap
